@@ -105,15 +105,11 @@
               <a href="https://lbfd.github.io/">Leonard Bauersfeld</a>,
             </span>
             <span class="author-block">
-              <a href="https://rpg.ifi.uzh.ch/people_scaramuzza.html">Davide Scaramuzza</a>,
+              <a href="https://rpg.ifi.uzh.ch/people_scaramuzza.html">Davide Scaramuzza</a>
             </span>
           </div>
 
-          <!-- <div class="is-size-5 publication-authors"> -->
-          <!--   <span class="author-block"><sup>*</sup>equal contribution</span> -->
-          <!-- </div> -->
-
-          <div class="is-size-5 publication-authors" style="font-size": 1.2em>
+          <div class="is-size-5 publication-authors" style="font-size: 1.2em;">
             <span class="author-block">
               <a href="https://rpg.ifi.uzh.ch">Robotics and Perception Group, University of Zurich</a>
             </span>
@@ -121,8 +117,8 @@
 
 
 	  <div class="column has-text-centered">
-	    <span class="conference-block" style="font-size: 1.2em; font-style: italic;">
-	      Conference on Robot Learning (CoRL) 2024, Munich, Germany
+	    <span class="conference-block" style="font-size: 1.4em;">
+	      Conference on Robot Learning (CoRL) 2024
 	    </span> 
 	  </div>
 
@@ -173,19 +169,21 @@
           <h2 class="title is-3">Real World Results</h2>
           <div id="results-videos" class="video-container">
             <div class="video-item">
-              <video id="teaser" autoplay muted loop playsinline height="100%">
-                <source src="./static/videos/corner.mp4" type="video/mp4">
-              </video>
-              <h2 class="subtitle has-text-centered" style="font-size: 16px;">
+              <div class="fancy-video-wrapper">
+                <video id="teaser1" autoplay controls muted loop playsinline width="100%">
+                  <source src="./static/videos/corner.mp4" type="video/mp4">
+                </video>
+                <div class="fancy-overlay"></div>
+              </div>
+              <h2 class="subtitle has-text-centered fancy-title">
                 Corner-Based Split-S Track
               </h2>
-
             </div>
             <div class="video-item">
-              <video id="teaser" autoplay muted loop playsinline height="100%">
+              <video id="teaser" autoplay controls muted loop playsinline height="100%">
                 <source src="./static/videos/image.mp4" type="video/mp4">
               </video>
-              <h2 class="subtitle has-text-centered" style="font-size: 16px;">
+              <h2 class="subtitle has-text-centered fancy-title">
                 Image-Based Split-S Track
               </h2>
             </div>
@@ -216,14 +214,14 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-	  Learning visuomotor policies for agile quadrotor flight presents significant difficulties, primarily from inefficient policy exploration caused by highdimensional visual inputs and the need             for precise and low-latency control. To address these challenges, we propose a novel approach that combines the performance of Reinforcement Learning (RL) and the sample efficiency of 
+	  Learning visuomotor policies for agile quadrotor flight presents significant difficulties, primarily from inefficient policy exploration caused by highdimensional visual inputs and the need for precise and low-latency control. To address these challenges, we propose a novel approach that combines the performance of Reinforcement Learning (RL) and the sample efficiency of 
 	  Imitation Learning (IL) in the task of vision-based autonomous drone racing.
           </p>
           <p>
-	  While RL provides a framework for learning high-performance controllers through trial and error, it faces challenges with sample efficiency and computational demands due to the high dimension           lity of visual inputs. Conversely, IL efficiently learns from visual expert demonstrations, but it remains limited by the expert’s performance and state distribution.
+	  While RL provides a framework for learning high-performance controllers through trial and error, it faces challenges with sample efficiency and computational demands due to the high dimensionality of visual inputs. Conversely, IL efficiently learns from visual expert demonstrations, but it remains limited by the expert’s performance and state distribution.
           </p>
           <p>
-	  To overcome these limitations, our policy learning framework integrates the strengths of both approaches. Our framework contains three phases: training a teacher policy using RL with privilege	    d state information, distilling it into a student policy via IL, and adaptive fine-tuning via RL. Testing in both simulated and real-world scenarios shows our approach can not only learn in 	      scenarios where RL from scratch fails but also outperforms existing IL methods in both robustness and performance, successfully navigating a quadrotor through a race course using only visual 
+	  To overcome these limitations, our policy learning framework integrates the strengths of both approaches. Our framework contains three phases: training a teacher policy using RL with privilege state information, distilling it into a student policy via IL, and adaptive fine-tuning via RL. Testing in both simulated and real-world scenarios shows our approach can not only learn in scenarios where RL from scratch fails but also outperforms existing IL methods in both robustness and performance, successfully navigating a quadrotor through a race course using only visual 
 	  information.
           </p>
         </div>
@@ -423,18 +421,18 @@ III, we bootstrap the actor using the student policy to fine-tune the policy thr
 <!--</section> -->
 
 
-<!-- <section class="section" id="BibTeX">
+<section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
-}</code></pre>
+    <pre><code>@article{xing2024bootstrapping,
+  title = {Bootstrapping Reinforcement Learning with Imitation for Vision-Based Agile Flight},
+  author = {Xing, Jiaxu and Romero, Angel and Bauersfeld, Leonard and Scaramuzza, Davide},
+  journal = {8th Conference on Robot Learning (CoRL)},
+  year = {2024},
+}
+</code></pre>
   </div>
-</section> -->
-
+</section> 
 
 <footer class="footer">
   <div class="container">
