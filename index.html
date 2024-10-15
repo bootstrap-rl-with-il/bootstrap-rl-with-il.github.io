@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrapping Vision Flight</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/rpg_icon.ico">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<style>
+  .gray-background {
+    background-color: #f0f0f0; 
+  }
+</style>
+  
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Bootstrapping Reinforcement Learning with Imitation for Vision-Based Agile Flight</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://www.jiaxux.ing/">Jiaxu Xing</a>,</span>
+            <span class="author-block">
+              <a href="https://roangel.github.io/">Angel Romero</a>,
+            <span class="author-block">
+              <a href="https://lbfd.github.io/">Leonard Bauersfeld</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://rpg.ifi.uzh.ch/people_scaramuzza.html">Davide Scaramuzza</a>,
+            </span>
+          </div>
+
+          <!-- <div class="is-size-5 publication-authors"> -->
+          <!--   <span class="author-block"><sup>*</sup>equal contribution</span> -->
+          <!-- </div> -->
+
+          <div class="is-size-5 publication-authors" style="font-size": 1.2em>
+            <span class="author-block">
+              <a href="https://rpg.ifi.uzh.ch">Robotics and Perception Group, University of Zurich</a>
+            </span>
+          </div>
+
+
+	  <div class="column has-text-centered">
+	    <span class="conference-block" style="font-size: 1.2em; font-style: italic;">
+	      Conference on Robot Learning (CoRL) 2024, Munich, Germany
+	    </span> 
+	  </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://openreview.net/forum?id=bt0PX0e4rE"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.12203"
+                   class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Real World Results</h2>
+          <div id="results-videos" class="video-container">
+            <div class="video-item">
+              <video id="teaser" autoplay muted loop playsinline height="100%">
+                <source src="./static/videos/corner.mp4" type="video/mp4">
+              </video>
+              <h2 class="subtitle has-text-centered" style="font-size: 16px;">
+                Corner-Based Split-S Track
+              </h2>
+
+            </div>
+            <div class="video-item">
+              <video id="teaser" autoplay muted loop playsinline height="100%">
+                <source src="./static/videos/image.mp4" type="video/mp4">
+              </video>
+              <h2 class="subtitle has-text-centered" style="font-size: 16px;">
+                Image-Based Split-S Track
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="hero teaser"> -->
+<!--   <div class="container is-max-desktop"> -->
+<!--     <div class="hero-body"> -->
+<!--       <video id="teaser" autoplay controls muted loop playsinline height="100%"> -->
+<!--         <source src="./static/videos/icra_hongze_compressed.mp4" -->
+<!--                 type="video/mp4"> -->
+<!--       </video> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </section> -->
+
+<section class="section gray-background">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+	  Learning visuomotor policies for agile quadrotor flight presents significant difficulties, primarily from inefficient policy exploration caused by highdimensional visual inputs and the need             for precise and low-latency control. To address these challenges, we propose a novel approach that combines the performance of Reinforcement Learning (RL) and the sample efficiency of 
+	  Imitation Learning (IL) in the task of vision-based autonomous drone racing.
+          </p>
+          <p>
+	  While RL provides a framework for learning high-performance controllers through trial and error, it faces challenges with sample efficiency and computational demands due to the high dimension           lity of visual inputs. Conversely, IL efficiently learns from visual expert demonstrations, but it remains limited by the expert’s performance and state distribution.
+          </p>
+          <p>
+	  To overcome these limitations, our policy learning framework integrates the strengths of both approaches. Our framework contains three phases: training a teacher policy using RL with privilege	    d state information, distilling it into a student policy via IL, and adaptive fine-tuning via RL. Testing in both simulated and real-world scenarios shows our approach can not only learn in 	      scenarios where RL from scratch fails but also outperforms existing IL methods in both robustness and performance, successfully navigating a quadrotor through a race course using only visual 
+	  information.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Method</h2>
+        <img src="./static/images/overview.png" alt="Method" style="max-width: 100%; height: auto;">
+        <h2 class="subtitle has-text-centered" style="font-size: 16px;">
+	We demonstrate visuomotor policy learning in three different stages. In stage I, we train a state-based
+teacher policy using RL. In stage II, we use IL to learn a student distillation policy using visual inputs. In stage
+III, we bootstrap the actor using the student policy to fine-tune the policy through vision-based RL
+        </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Race tracks Visualization</h2>
+        <img src="./static/images/tracks.png" alt="Method" style="max-width: 100%; height: auto;">
+        <h2 class="subtitle has-text-centered" style="font-size: 16px;">
+          Visualization of the drone racing tracks used for the experiments, each characterized by varying levels of complexity. 
+          All the tracks maintain a consistent size scale, spanning widths from 8 meters to 16 meters.
+        </h2>
+    </div>
+  </div>
+</section>
+
+<!-- 
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Real World Results</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Figure 8.m4v"
+                    type="video/mp4">
+          </video>
+          
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Figure8_3D.m4v"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Kidney.m4v"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/SS.m4v"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/SS_3D.m4v"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Twist.m4v"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- <section class="hero is-light is-small"> -->
+<!--   <div class="hero-body"> -->
+<!--     <div class="container"> -->
+<!--       <div class="columns is-centered has-text-centered"> -->
+<!--         <div class="column is-four-fifths"> -->
+<!--           <h2 class="title is-3">Real World Results</h2> -->
+<!--           <div id="results-videos" class="video-container"> -->
+<!--             <div class="video-item"> -->
+<!--               <video id="teaser" autoplay muted loop playsinline height="100%"> -->
+<!--                 <source src="./static/videos/Figure-8.mp4" type="video/mp4"> -->
+<!--               </video> -->
+<!--               <h2 class="subtitle has-text-centered" style="font-size: 16px;"> -->
+<!--                 Figure 8 -->
+<!--               </h2> -->
+
+<!--             </div> -->
+<!--             <div class="video-item"> -->
+<!--               <video id="teaser" autoplay muted loop playsinline height="100%"> -->
+<!--                 <source src="./static/videos/Figure8_3D.mp4" type="video/mp4"> -->
+<!--               </video> -->
+<!--               <h2 class="subtitle has-text-centered" style="font-size: 16px;"> -->
+<!--                 3D Figure 8 -->
+<!--               </h2> -->
+<!--             </div> -->
+<!--           </div> -->
+<!--           <div id="results-videos" class="video-container"> -->
+<!--             <div class="video-item"> -->
+<!--               <video id="teaser" autoplay muted loop playsinline height="100%"> -->
+<!--                 <source src="./static/videos/Kidney.mp4" type="video/mp4"> -->
+<!--               </video> -->
+<!--               <h2 class="subtitle has-text-centered" style="font-size: 16px;"> -->
+<!--                 Kidney -->
+<!--               </h2> -->
+
+<!--             </div> -->
+<!--             <div class="video-item"> -->
+<!--               <video id="teaser" autoplay muted loop playsinline height="100%"> -->
+<!--                 <source src="./static/videos/SS_3D.mp4" type="video/mp4"> -->
+<!--               </video> -->
+<!--               <h2 class="subtitle has-text-centered" style="font-size: 16px;"> -->
+<!--                 3D Big S -->
+<!--               </h2> -->
+<!--             </div> -->
+<!--           </div> -->
+<!--           <div id="results-videos" class="video-container"> -->
+<!--             <div class="video-item"> -->
+<!--               <video id="teaser" autoplay muted loop playsinline height="100%"> -->
+<!--                 <source src="./static/videos/SS.mp4" type="video/mp4"> -->
+<!--               </video> -->
+<!--               <h2 class="subtitle has-text-centered" style="font-size: 16px;"> -->
+<!--                 Big S -->
+<!--               </h2> -->
+
+<!--             </div> -->
+<!--             <div class="video-item"> -->
+<!--               <video id="teaser" autoplay muted loop playsinline height="100%"> -->
+<!--                 <source src="./static/videos/Twist.mp4" type="video/mp4"> -->
+<!--               </video> -->
+<!--               <h2 class="subtitle has-text-centered" style="font-size: 16px;"> -->
+<!--                 Twist -->
+<!--               </h2> -->
+<!--             </div> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </section> -->
+
+
+
+
+
+<!--<section class="section"> -->
+<!--  <div class="container is-max-desktop"> -->
+<!--    <!-1- Animation. -1-> -->
+<!--    <div class="columns is-centered has-text-centered"> -->
+<!--      <div class="column is-full-width"> -->
+<!--        <h2 class="title is-3">Simulation</h2> -->
+
+<!--        <div class="content has-text-justified"> -->
+<!--          <p> -->
+<!--            We can also animate the dynamic track racing experiment. --> 
+<!--            Use the slider here to control a group of drones flying through a dynamic Figure 8 track. -->
+<!--          </p> -->
+<!--        </div> -->
+<!--        <div class="columns is-vcentered interpolation-panel"> -->
+<!--          <div class="column is-3 has-text-centered"> -->
+<!--          </div> -->
+<!--          <div class="column interpolation-video-column"> -->
+<!--            <div id="interpolation-image-wrapper"> -->
+<!--              Loading... -->
+<!--            </div> -->
+<!--            <input class="slider is-fullwidth is-large is-info" -->
+<!--                   id="interpolation-slider" -->
+<!--                   step="1" min="0" max="100" value="0" type="range"> -->
+<!--          </div> -->
+<!--          <div class="column is-3 has-text-centered"> -->
+<!--          </div> -->
+<!--        </div> -->
+<!--        <br/> -->
+<!--        <!-1-/ Interpolating. -1-> -->
+<!--      </div> -->
+<!--    </div> -->
+<!--    <!-1-/ Animation. -1-> -->
+<!--  </div> -->
+<!--</section> -->
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website borrowed from the <a
+              href="https://github.com/nerfies/nerfies.github.io"><span class="dnerf">Nerfies</span></a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
